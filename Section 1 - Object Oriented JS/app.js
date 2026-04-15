@@ -38,7 +38,8 @@ class Triangle {
         return Math.sqrt(this.a ** 2 + this.b ** 2);
     }
 
-    sayHi(){
-        return 'SAYING HI FROM TRIANGLE'
+    // Methods can call other methods but MUST use the this keyword in order to reference the new object created
+    sayHi() {
+        return `The triangle with a side A of ${this.a} and side B of ${this.b} and with an area of ${this.getArea()} SAYS HI`
     }
 }
