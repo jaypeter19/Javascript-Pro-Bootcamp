@@ -73,3 +73,34 @@ class ColorMoodTriangle extends ColorTriangle {
         this.mood = mood;
     }
 }
+
+// Static Properties and Methods
+// Commonly known as Class Attribute by other programming languages
+// Static Methods commonly known as Class Method by other programming languages
+
+class Cat {
+    constructor(name, breed) {
+        this.name = name;
+        this.breed = breed;
+    }
+
+    static species = "felis catus";
+
+    static meow() {
+        console.log("THIS IS: ", this) // reffers to the class itself
+    }
+
+    static registerStray() {
+        const names = ["Muffin", "Biscuit", "Sleepy", "Dodo", "Princess Butterface"];
+
+        const name = choice(names);
+        return new Cat(name, "unknown");
+    }
+}
+
+
+function choice(arr) {
+    if (!Array.isArray(arr) || arr.length === 0) return undefined;
+    const idx = Math.floor(Math.random() * arr.length);
+    return arr[idx];
+}
