@@ -43,3 +43,61 @@ class Circle {
         }
     }
 }
+
+
+// Class fields 
+// Public and private fields
+
+
+class Cat {
+    static numOfCats = 0;
+
+    numLegs = 4; // Public class field
+
+    hasTail = true; // Public class field
+
+    constructor(name) {
+        this._name = name;
+        Cat.numOfCats += 1;
+    }
+}
+
+class Circle {
+    #radius; // Private field can not be access outside the class circle
+    constructor(radius) {
+        this.#radius = radius;
+    }
+}
+
+class MyClass {
+    #privateMethod() {
+        console.log("PRIVATE METHOD CALLED")
+    }
+
+    publicMethod() {
+        this.#privateMethod(); // private Method is being called inside class scope
+    }
+}
+
+const myClass = new MyClass();
+myClass.#privateMethod();
+
+myClass.publicMethod(); // Console.log will be shown
+
+
+// Static intialization block
+
+class MyClass {
+
+    static connection;
+    static {
+        if (process.env.NODE_ENV === 'production') {
+            this.connection = this.loadProductionConnection();
+        } else {
+            this.connection = this.loadDevelopmentConnection();
+        }
+    }
+
+    static loadProductionConnection(){};
+    static loadDevelopmentConnection(){};
+}
